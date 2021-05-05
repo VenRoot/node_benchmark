@@ -2,10 +2,15 @@ const { Worker } = require("worker_threads");
 const bcrypt = require('bcrypt');
 const d = [];
 
-// const argv = require("yargs/yargs")(process.argv.slice(2)).usage('Usage: -threads [num] -tasks [num]').demand(['threads', 'tasks']).argv;
+const os = require("os");
+let result = 0;
 
-// console.log(argv.threads, argv.tasks);
-// console.dir(argv);
+
+const num = Number(process.argv[2]);
+if (process.argv[2] === undefined) {
+    process.argv[2] = num = 10;
+    console.warn("No argument for tasks. Defaults to 10")
+}
 
 const settings = {
 
@@ -26,7 +31,7 @@ const x = () => {
 let result = 0;
 
 (async function() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < num; i++) {
         const worker1 = new Worker('./worker1.js');
         const worker2 = new Worker('./worker2.js');
         const worker3 = new Worker('./worker3.js');
@@ -47,6 +52,6 @@ let result = 0;
     d.forEach(i => {
         result += i;
     });
-    console.log(`Time took for all tasks:${Math.round(result)}`);
-    console.log(`Time took per task(avg): ${Math.round(result/process.argv[2])}`);
+    console.log(`Time took for all tasks:${Math.round(result)}ms`);
+    console.log(`Time took per task(avg): ${Math.round(result/process.argv[2])}m`);
 })();
