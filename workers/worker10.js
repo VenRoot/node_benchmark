@@ -9,7 +9,7 @@ parentPort.on('message', async(obj) => {
             bcrypt.hashSync(Math.random().toString(), 10);
         }
         const t1 = performance.now();
-        parentPort.postMessage(`W${obj[1]}: Hashing Math.random() 333 times with 10 salts took ${t1-t0}ms`);
+        parentPort.postMessage(`W${obj[1]}: Hashing Math.random() ${1000/obj[0]} times with 10 salts took ${t1-t0}ms`);
         parentPort.close();
         resolve();
     });
