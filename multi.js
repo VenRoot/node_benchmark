@@ -32,7 +32,7 @@ if (process.argv[2] === undefined) {
         }
         let P = [];
         workers.forEach((w, i) => {
-            P.push(new Promise(resolve => { w.on("exit", () => resolve()) }))
+            P.push(new Promise(resolve => { w.on("exit", () => resolve()) }).catch(e => { throw e; }));
         })
         const t0 = performance.now();
 
