@@ -12,5 +12,5 @@ parentPort.on('message', async(obj) => {
         parentPort.postMessage(`W${obj[1]}: Hashing Math.random() ${1000/obj[0]} times with 10 salts took ${t1-t0}ms`);
         parentPort.close();
         resolve();
-    });
+    }).catch(e => { throw e; });
 });

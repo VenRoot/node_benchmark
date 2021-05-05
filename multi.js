@@ -5,6 +5,7 @@ const d = [];
 const os = require("os");
 let result = 0;
 
+process.on("uncaughtException", e => { console.error(e); });
 
 const num = Number(process.argv[2]);
 if (process.argv[3] === undefined) {
