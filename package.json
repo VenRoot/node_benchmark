@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "bcrypt": "^5.0.1"
+    "bcrypt": "^5.0.1",
+    "yargs": "^17.0.1"
   }
 }
