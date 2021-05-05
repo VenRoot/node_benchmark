@@ -7,7 +7,7 @@ let result = 0;
 
 process.on("uncaughtException", e => { console.error(e); });
 
-const num = Number(process.argv[2]);
+
 if (process.argv[3] === undefined) {
     process.argv[3] = 10;
     console.warn("No argument for tasks. Defaults to 10")
@@ -17,6 +17,9 @@ if (process.argv[2] === undefined) {
     process.argv[2] = os.cpus().length / 2;
     console.warn("No value given for cpu threads, defaults to half = " + os.cpus().length);
 }
+
+const num = Number(process.argv[2]);
+
 (async function() {
     //console.log(num);
     for (let i = 0; i < process.argv[3]; i++) {
