@@ -8,7 +8,7 @@ let result = 0;
 const nodev = Number(process.versions.node.split('.'));
 
 if (nodev < 16) {
-    console.error(`It is not recommended to use a node version less than 16, your version: ${process.versions.node}`);
+    console.error(`It is not recommended to use a node version less than 16, your version: ${process.versions.node}\n\nPlease upgrade node using npm install -g node@latest`);
     process.exit(0);
 }
 
