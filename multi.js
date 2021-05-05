@@ -5,7 +5,12 @@ const d = [];
 const os = require("os");
 let result = 0;
 
-process.on("uncaughtException", e => { console.error(e); });
+const nodev = Number(process.versions.node.split('.'));
+
+if (nodev < 16) {
+    console.error(`It is not recommended to use a node version less than 16, your version: ${process.versions.node}`);
+    process.exit(0);
+}
 
 
 if (process.argv[3] === undefined) {
