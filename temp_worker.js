@@ -1,5 +1,7 @@
 const { parentPort } = require("worker_threads");
 const bcrypt = require("bcrypt");
+const performance = require("perf_hooks");
+
 parentPort.on('message', async(obj) => {
     return new Promise(resolve => {
         //console.dir(obj);
